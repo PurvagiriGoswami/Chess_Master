@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 250 250% 98%;
+    --foreground: 157 25% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 157 25% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 157 25% 20%;
+    --primary: 157 25% 20%;
+    --primary-foreground: 48 30% 95%;
+    --secondary: 48 30% 95%;
+    --secondary-foreground: 157 25% 20%;
+    --muted: 48 30% 95%;
+    --muted-foreground: 157 25% 45%;
+    --accent: 45 85% 55%;
+    --accent-foreground: 157 25% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 48 30% 90%;
+    --input: 48 30% 90%;
+    --ring: 157 25% 20%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 157 25% 6%;
+    --foreground: 48 30% 95%;
+    --card: 157 25% 8%;
+    --card-foreground: 48 30% 95%;
+    --popover: 157 25% 8%;
+    --popover-foreground: 48 30% 95%;
+    --primary: 48 30% 95%;
+    --primary-foreground: 157 25% 20%;
+    --secondary: 157 25% 12%;
+    --secondary-foreground: 48 30% 95%;
+    --muted: 157 25% 12%;
+    --muted-foreground: 48 30% 65%;
+    --accent: 45 85% 55%;
+    --accent-foreground: 157 25% 20%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 157 25% 12%;
+    --input: 157 25% 12%;
+    --ring: 48 30% 85%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer components {
+  .chess-board {
+    @apply shadow-2xl border-2 border-chess-forest/20 rounded-lg overflow-hidden;
+  }
+  
+  .chess-square {
+    @apply relative transition-all duration-200;
+  }
+  
+  .chess-square.light {
+    @apply bg-chess-lightSquare;
+  }
+  
+  .chess-square.dark {
+    @apply bg-chess-darkSquare;
+  }
+  
+  .chess-square.highlighted {
+    @apply bg-chess-highlight/30;
+  }
+  
+  .chess-square.in-check {
+    @apply bg-chess-danger/30 animate-check-pulse;
+  }
+  
+  .chess-piece {
+    @apply transition-all duration-300 hover:scale-110 cursor-pointer;
+  }
+  
+  .chess-piece.moving {
+    @apply animate-piece-move;
+  }
+  
+  .game-panel {
+    @apply bg-card border border-border rounded-lg p-6 shadow-lg;
+  }
+  
+  .status-indicator {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .status-indicator.active {
+    @apply bg-green-100 text-green-800 border border-green-200;
+  }
+  
+  .status-indicator.waiting {
+    @apply bg-yellow-100 text-yellow-800 border border-yellow-200;
+  }
+  
+  .status-indicator.finished {
+    @apply bg-gray-100 text-gray-800 border border-gray-200;
+  }
+}
+
+/* Hide Next.js badge and error messages */
+body > nextjs-portal {
+  display: none;
+}
